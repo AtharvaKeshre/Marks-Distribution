@@ -34,8 +34,13 @@ app.get("/api/status", (req, res) => {
   res.status(200).json({ message: "Server is running" });
 });
 
+app.get("/check", (req, res) => {
+  res.status(200).json({ message: "Server is running" });
+});
 
 app.post("/api/user-details", async (req, res) => {
+  console.log("Request received at /api/user-details");
+  console.log("Request Body:", req.body);
 
   const { name, email, nuid, group } = req.body;
 
@@ -43,6 +48,7 @@ app.post("/api/user-details", async (req, res) => {
     console.log("Validation failed: Missing fields");
     return res.status(400).json({ error: "All fields are required." });
   }
+  
 
   try {
     const pool = await sql.connect(dbConfig);
@@ -68,7 +74,8 @@ app.post("/api/user-details", async (req, res) => {
 
 // Endpoint to save group ratings
 app.post("/api/group-ratings", async (req, res) => {
-
+    console.log("Request received at /api/group-ratings");
+    console.log("Request Body:", req.body);
   
     const { groupId, ratings } = req.body;
   
@@ -79,10 +86,11 @@ app.post("/api/group-ratings", async (req, res) => {
   
     try {
       const pool = await sql.connect(dbConfig);
-
+      console.log("Connected to the database");
   
       for (const rating of ratings) {
         const { name, points } = rating;
+        console.log(`Inserting rating: ${name}, ${points}`);
         await pool
           .request()
           .input("groupId", sql.Int, groupId)
