@@ -103,6 +103,7 @@ const GroupRatingForm = ({ userDetails }) => {
             <label className="form-label">
               Name:
               <input
+              required
               style={{width:"300px", marginLeft:"10px"}}
                 type="text"
                 value={member.name}
