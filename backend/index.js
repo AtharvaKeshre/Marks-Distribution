@@ -30,10 +30,6 @@ const dbConfig = {
   },
 };
 
-console.log("DB_HOST:", process.env.DB_HOST);
-console.log("DB_USER:", process.env.DB_USER);
-console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
-console.log("DB_NAME:", process.env.DB_NAME);
 app.get("/api/status", (req, res) => {
   res.status(200).json({ message: "Server is running" });
 });
@@ -53,7 +49,6 @@ app.post("/api/user-details", async (req, res) => {
     return res.status(400).json({ error: "All fields are required." });
   }
   
-
   try {
     const pool = await sql.connect(dbConfig);
 
