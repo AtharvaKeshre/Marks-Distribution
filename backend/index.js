@@ -20,10 +20,10 @@ app.use(bodyParser.json());
 
 // SQL Server Configuration
 const dbConfig = {
-  user: "sa",
-  password: "Mysqlserver@1",
-  server: "localhost",
-  database: "class_participation",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
   options: {
     encrypt: true, // Use encryption for Azure SQL
     trustServerCertificate: true, // For self-signed certificates
@@ -108,6 +108,7 @@ app.post("/api/group-ratings", async (req, res) => {
       res.status(500).json({ error: "Failed to save group ratings." });
     }
   });
+
 
 // Start the server
 app.listen(PORT, () => {

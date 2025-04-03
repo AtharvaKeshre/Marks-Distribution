@@ -57,7 +57,7 @@ const GroupRatingForm = ({ userDetails }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:5001/api/group-ratings", {
+      const response = await fetch("https://marks-distribution.onrender.com:5001/api/group-ratings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

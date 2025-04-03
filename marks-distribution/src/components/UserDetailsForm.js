@@ -33,7 +33,7 @@ const UserDetailsForm = ({ onSubmit }) => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5001/api/user-details", {
+      const response = await fetch("https://marks-distribution.onrender.com:5001/api/user-details", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
